@@ -38,4 +38,20 @@ public class ItemTest {
 		
 		assertThat(item.priceAfterTaxes(), equalTo(22.0));
 	}
+	
+	@Test
+	public void thePriceWithTaxesShouldBeRobustToDecimals() throws Exception {
+		
+		Item item = new Item().withAmount(2).withPrice(1.0);
+		
+		assertThat(item.priceAfterTaxes(), equalTo(2.2));
+	}
+	
+	@Test
+	public void specialTaxationRegimeShouldMeanNoTaxes() throws Exception {
+		
+		Item item = new Item().withPrice(1.0).underSpecialTaxationRegime();
+		
+		assertThat(item.priceAfterTaxes(), equalTo(1.0));
+	}
 }
