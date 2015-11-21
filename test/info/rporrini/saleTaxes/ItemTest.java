@@ -70,4 +70,20 @@ public class ItemTest {
 		
 		assertThat(item.totalTaxes(), equalTo(3.00));
 	}
+	
+	@Test
+	public void taxesForImportedItemsShouldBeReisedBy5Percent() throws Exception {
+		
+		Item item = new Item().withPrice(27.99).imported();
+		
+		assertThat(item.priceAfterTaxes(), equalTo(32.19));
+	}
+	
+	@Test
+	public void taxesForImportedItemsShouldBeReisedBy5PercentAlsoWhenAreNotTaxed() throws Exception {
+		
+		Item item = new Item().withPrice(1.00).notTaxed().imported();
+		
+		assertThat(item.priceAfterTaxes(), equalTo(1.05));
+	}
 }
