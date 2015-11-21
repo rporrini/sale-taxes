@@ -1,4 +1,4 @@
-package info.rporrini.saleTaxes.unit;
+package info.rporrini.saleTaxes;
 
 import static org.junit.Assert.assertTrue;
 
