@@ -26,7 +26,7 @@ public class Item{
 	}
 
 	public double priceAfterTaxes() {
-		return this.amount * incrementBy(this.price, taxRate);
+		return rounded(this.amount * (this.price + taxes()));
 	}
 
 	public Item withAmount(int amount) {
@@ -34,12 +34,16 @@ public class Item{
 		return this;
 	}
 	
-	private double incrementBy(double price, double rate) {
-		return this.price + (this.price * rate / 100.0);
-	}
-
 	public Item underSpecialTaxationRegime() {
 		this.taxRate = 0.0;
 		return this;
+	}
+	
+	private double taxes() {
+		return this.price * this.taxRate / 100.0;
+	}
+	
+	private double rounded(double totalPrice) {
+		return Math.round(totalPrice * 100d) / 100d;
 	}
 }
