@@ -7,24 +7,24 @@ import java.io.ByteArrayOutputStream;
 
 import org.junit.Test;
 
-public class TotalPriceTest {
+public class TotalTaxesTest {
 
 	@Test
-	public void theTotalAmountShouldBeZeroByDefault() {
+	public void totalTaxesShouldBeZeroWhenNoItemsWereProcessed() {
 		
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		
-		new TotalPrice(output).finishInspection();
+		new TotalTaxes(output).finishInspection();
 		
-		assertThat(new String(output.toByteArray()), containsString("Total: 0.00"));
+		assertThat(new String(output.toByteArray()), containsString("Sales Taxes: 0.00"));
 	}
-
+	
 	@Test
 	public void shouldComputeTheTotalPriceForItems() throws Exception {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		
-		new TotalPrice(output).inspect(new Item().withPrice(10.0).notTaxed()).finishInspection();
+		new TotalTaxes(output).inspect(new Item().withPrice(10.0)).finishInspection();
 		
-		assertThat(new String(output.toByteArray()), containsString("Total: 10.00"));
+		assertThat(new String(output.toByteArray()), containsString("Sales Taxes: 1.00"));
 	}	
 }

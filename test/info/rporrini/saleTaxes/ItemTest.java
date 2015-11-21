@@ -62,4 +62,12 @@ public class ItemTest {
 		
 		assertThat(item.priceAfterTaxes(), equalTo(1.0));
 	}
+	
+	@Test
+	public void shouldComputeTheTotalTaxes() throws Exception {
+		
+		Item item = new Item().withAmount(2).withPrice(14.99);
+		
+		assertThat(item.totalTaxes(), equalTo(3.00));
+	}
 }

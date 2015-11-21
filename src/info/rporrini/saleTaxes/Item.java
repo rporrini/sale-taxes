@@ -38,9 +38,13 @@ public class Item{
 	}
 
 	public double priceAfterTaxes() {
-		return rounded(this.amount * (this.price + taxes()));
+		return rounded(this.amount * (this.price + tax()));
 	}
-
+	
+	public double totalTaxes() {
+		return rounded(this.amount * tax());
+	}
+	
 	public Item withAmount(int amount) {
 		this.amount = amount;
 		return this;
@@ -51,7 +55,7 @@ public class Item{
 		return this;
 	}
 	
-	private double taxes() {
+	private double tax() {
 		return this.price * this.taxRate / 100.0;
 	}
 	
