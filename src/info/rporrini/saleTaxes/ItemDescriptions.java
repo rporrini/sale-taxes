@@ -4,7 +4,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemDescriptions implements Inspection{
+public class ItemDescriptions implements BasketInspection{
 
 	private Screen out;
 	private List<String> lines;
@@ -21,7 +21,7 @@ public class ItemDescriptions implements Inspection{
 	}
 	
 	@Override
-	public void finishInspection(){
+	public void finish(){
 		for(String line : lines){
 			this.out.send(line);
 		}

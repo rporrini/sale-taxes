@@ -3,7 +3,7 @@ package info.rporrini.saleTaxes;
 import java.util.Arrays;
 import java.util.List;
 
-public class TaxationRegimes implements Inspection{
+public class TaxationRegimes implements BasketInspection{
 
 	private List<String> specialCategories;
 
@@ -20,5 +20,5 @@ public class TaxationRegimes implements Inspection{
 	}
 
 	@Override
-	public void finishInspection() {}
+	public void finish() {}
 }

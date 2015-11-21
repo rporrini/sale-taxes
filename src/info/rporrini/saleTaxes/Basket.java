@@ -12,15 +12,17 @@ public class Basket {
 
 	public Basket add(String[] rawItem) {
 		items.add(new Item()
+						.withAmount(Integer.parseInt(rawItem[0]))
 						.withDescription(rawItem[1])
-						.withCategory(rawItem[3])
-						.withPrice(Double.parseDouble(rawItem[2])));
+						.withPrice(Double.parseDouble(rawItem[2]))
+						.withCategory(rawItem[3]));
 		return this;
 	}
 	
-	public void scan(Inspection visitor){
+	public void scan(BasketInspection inspector){
 		for(Item item : this.items){
-			visitor.inspect(item);
+			inspector.inspect(item);
 		}
+		inspector.finish();
 	}
 }

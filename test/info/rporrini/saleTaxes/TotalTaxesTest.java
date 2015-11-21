@@ -14,7 +14,7 @@ public class TotalTaxesTest {
 		
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		
-		new TotalTaxes(output).finishInspection();
+		new TotalTaxes(output).finish();
 		
 		assertThat(new String(output.toByteArray()), containsString("Sales Taxes: 0.00"));
 	}
@@ -23,7 +23,7 @@ public class TotalTaxesTest {
 	public void shouldComputeTheTotalPriceForItems() throws Exception {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		
-		new TotalTaxes(output).inspect(new Item().withPrice(10.0)).finishInspection();
+		new TotalTaxes(output).inspect(new Item().withPrice(10.0)).finish();
 		
 		assertThat(new String(output.toByteArray()), containsString("Sales Taxes: 1.00"));
 	}	

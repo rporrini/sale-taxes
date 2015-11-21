@@ -16,15 +16,14 @@ public class ReceiptApplication {
 			basket.add(rawItem);
 		}
 		
-		Inspection[] inspections = new Inspection[]{
+		BasketInspection[] inspections = new BasketInspection[]{
 				new TaxationRegimes("books", "food", "medicals"),
 				new ItemDescriptions(out),
 				new TotalTaxes(out),
 				new TotalPrice(out)
 		};
-		for(Inspection inspector : inspections){
+		for(BasketInspection inspector : inspections){
 			basket.scan(inspector);
-			inspector.finishInspection();
 		}
 	}
 }

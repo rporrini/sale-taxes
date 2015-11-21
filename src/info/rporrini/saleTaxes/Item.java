@@ -10,6 +10,16 @@ public class Item{
 	private String description = "";
 	private String category = "";
 
+	public Item withPrice(double shelfPrice) {
+		this.price = shelfPrice;
+		return this;
+	}
+	
+	public Item withAmount(int amount) {
+		this.amount = amount;
+		return this;
+	}
+	
 	public Item withDescription(String description){
 		this.description = description;
 		return this;
@@ -32,22 +42,12 @@ public class Item{
 		return this.amount;
 	}
 
-	public Item withPrice(double shelfPrice) {
-		this.price = shelfPrice;
-		return this;
-	}
-
 	public double priceAfterTaxes() {
 		return rounded(this.amount * (this.price + tax()));
 	}
 	
 	public double totalTaxes() {
 		return rounded(this.amount * tax());
-	}
-	
-	public Item withAmount(int amount) {
-		this.amount = amount;
-		return this;
 	}
 	
 	public Item notTaxed() {

@@ -2,7 +2,7 @@ package info.rporrini.saleTaxes;
 
 import java.io.OutputStream;
 
-public class TotalTaxes implements Inspection{
+public class TotalTaxes implements BasketInspection{
 
 	private Screen out;
 	private double taxes = 0.0;
@@ -11,7 +11,7 @@ public class TotalTaxes implements Inspection{
 		this.out = new Screen(out);
 	}
 
-	public void finishInspection() {
+	public void finish() {
 		out.send("Sales Taxes: " + new PrintedNumber(taxes).asString());
 		out.flush();
 	}

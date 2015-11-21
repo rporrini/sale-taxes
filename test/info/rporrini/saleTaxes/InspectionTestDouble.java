@@ -3,7 +3,7 @@ package info.rporrini.saleTaxes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InspectionTestDouble implements Inspection{
+public class InspectionTestDouble implements BasketInspection{
 	
 	public List<Item> items = new ArrayList<Item>();
 	
@@ -18,5 +18,5 @@ public class InspectionTestDouble implements Inspection{
 	}
 
 	@Override
-	public void finishInspection() {}
+	public void finish() {}
 }

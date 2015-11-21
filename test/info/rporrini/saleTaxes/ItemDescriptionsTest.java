@@ -14,7 +14,7 @@ public class ItemDescriptionsTest {
 		
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		
-		new ItemDescriptions(output).inspect(new Item().withDescription("the item").withPrice(10).notTaxed()).finishInspection();
+		new ItemDescriptions(output).inspect(new Item().withDescription("the item").withPrice(10).notTaxed()).finish();
 		
 		assertThat(new String(output.toByteArray()), containsString("1 the item: 10.00"));
 	}
