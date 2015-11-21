@@ -1,7 +1,6 @@
 package info.rporrini.saleTaxes;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Basket {
 
@@ -11,12 +10,17 @@ public class Basket {
 		items = new ArrayList<Item>();
 	}
 
-	public List<Item> items() {
-		return items;
-	}
-
 	public Basket add(String[] rawItem) {
-		items.add(new Item().withDescription(rawItem[1]));
+		items.add(new Item()
+						.withDescription(rawItem[1])
+						.withCategory(rawItem[3])
+						.withPrice(Double.parseDouble(rawItem[2])));
 		return this;
+	}
+	
+	public void scan(Inspection visitor){
+		for(Item item : this.items){
+			visitor.track(item);
+		}
 	}
 }

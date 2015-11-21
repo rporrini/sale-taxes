@@ -6,10 +6,20 @@ public class Item{
 	private double price = 0.0;
 	private int amount = 1;
 	private double taxRate = 10.0;
+	private String category;
 
 	public Item withDescription(String description){
 		this.description = description;
 		return this;
+	}
+	
+	public Item withCategory(String category){
+		this.category = category;
+		return this;
+	}
+	
+	public String category() {
+		return category;
 	}
 	
 	public String description() {

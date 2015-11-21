@@ -12,32 +12,32 @@ public class BasketTest {
 	@Test
 	public void shouldBeEmptyByDefault() {
 		
-		Basket basket = new Basket();
+		InspectionTestDouble inspector = new InspectionTestDouble();
 		
-		assertThat(basket.items(), empty());
+		new Basket().scan(inspector);
+		
+		assertThat(inspector.items, empty());
 	}
 	
 	@Test
 	public void shouldAcceptNewItems() throws Exception {
 		
-		String[] item = new String[]{"1", "the item", "2.0", "the category"};
+		InspectionTestDouble inspector = new InspectionTestDouble();
 		
-		Basket basket = new Basket().add(item);
+		new Basket().add(new String[]{"1", "the item", "2.0", "the item category"}).scan(inspector);
 		
-		assertThat(basket.items(), not(empty()));
+		assertThat(inspector.items, not(empty()));
 	}
 	
 	@Test
-	public void shouldBuildItemsWithTheRightDescription() throws Exception {
+	public void shouldBuildItemsWithTheRightRepresentation() throws Exception {
 		
-		String[] item = new String[]{"1", "the item", "2.0", "the category"};
+		InspectionTestDouble inspector = new InspectionTestDouble();
 		
-		Basket basket = new Basket().add(item);
+		new Basket().add(new String[]{"1", "the item", "2.0", "the item category"}).scan(inspector);
 		
-		assertThat(firstItemOf(basket).description(), equalTo("the item"));
-	}
-	
-	private Item firstItemOf(Basket basket) {
-		return basket.items().get(0);
+		assertThat(inspector.last().description(), equalTo("the item"));
+		assertThat(inspector.last().category(), equalTo("the item category"));
+		assertThat(inspector.last().priceAfterTaxes(), equalTo(2.2));
 	}
 }
