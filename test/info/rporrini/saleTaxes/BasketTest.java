@@ -5,8 +5,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
-import java.util.List;
-
 import org.junit.Test;
 
 public class BasketTest {
@@ -34,8 +32,12 @@ public class BasketTest {
 		
 		String[] item = new String[]{"1", "the item", "2.0", "the category"};
 		
-		List<Item> items = new Basket().add(item).items();
+		Basket basket = new Basket().add(item);
 		
-		assertThat(items.get(0).description(), equalTo("the item"));
+		assertThat(firstItemOf(basket).description(), equalTo("the item"));
+	}
+	
+	private Item firstItemOf(Basket basket) {
+		return basket.items().get(0);
 	}
 }
