@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 
 import java.io.ByteArrayOutputStream;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ReceiptApplicationAcceptanceTest {
@@ -27,5 +28,42 @@ public class ReceiptApplicationAcceptanceTest {
 						  containsString("Sales Taxes: 1.50"),
 						  containsString("Total: 29.83")));
 	}
-
+	
+	@Test
+	@Ignore
+	public void shouldPrintTheDetailsForImportedItems() {
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		
+		new ReceiptApplication(output).process(new String[][]{
+												{"1", "imported box of chocolates", "10.00", "food"},
+												{"1", "imported bottle of perfume", "47.50", "perfumes"},
+										});
+		
+		assertThat(new String(output.toByteArray()), 
+					allOf(containsString("1 imported box of chocolates: 10.50"), 
+						  containsString("1 imported bottle of perfume: 54.65"),
+						  containsString("Sales Taxes: 7.65"),
+						  containsString("Total: 65.15")));
+	}
+	
+	@Test
+	@Ignore
+	public void shouldPrintTheDetailsForMixedItems() {
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		
+		new ReceiptApplication(output).process(new String[][]{
+												{"1", "imported bottle of perfume", "27.99", "perfumes"},
+												{"1", "bottle of perfume", "18.99", "perfumes"},
+												{"1", "packet of headache pills", "9.75", "medicals"},
+												{"1", "imported box of chocolates", "11.25", "food"},
+										});
+		
+		assertThat(new String(output.toByteArray()), 
+					allOf(containsString("1 imported bottle of perfume: 32.19"), 
+						  containsString("1 bottle of perfume: 20.89"),
+						  containsString("1 packet of headache pills: 9.75"),
+						  containsString("1 imported box of chocolates: 11.85"),
+						  containsString("Sales Taxes: 6.70"),
+						  containsString("Total: 74.68")));
+	}
 }
