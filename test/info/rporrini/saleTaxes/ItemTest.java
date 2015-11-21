@@ -58,7 +58,7 @@ public class ItemTest {
 	@Test
 	public void specialTaxationRegimeShouldMeanNoTaxes() throws Exception {
 		
-		Item item = new Item().withPrice(1.0).underSpecialTaxationRegime();
+		Item item = new Item().withPrice(1.0).notTaxed();
 		
 		assertThat(item.priceAfterTaxes(), equalTo(1.0));
 	}

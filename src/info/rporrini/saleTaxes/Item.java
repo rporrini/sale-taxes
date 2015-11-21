@@ -2,11 +2,13 @@ package info.rporrini.saleTaxes;
 
 public class Item{
 	
-	private String description;
 	private double price = 0.0;
-	private int amount = 1;
 	private double taxRate = 10.0;
-	private String category;
+	
+	private int amount = 1;
+	
+	private String description = "";
+	private String category = "";
 
 	public Item withDescription(String description){
 		this.description = description;
@@ -44,7 +46,7 @@ public class Item{
 		return this;
 	}
 	
-	public Item underSpecialTaxationRegime() {
+	public Item notTaxed() {
 		this.taxRate = 0.0;
 		return this;
 	}

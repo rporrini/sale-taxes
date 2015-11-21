@@ -13,7 +13,7 @@ public class TaxationRegimes {
 
 	public void track(Item item) {
 		if(specialCategories.contains(item.category())) {
-			item.underSpecialTaxationRegime();
+			item.notTaxed();
 		}
 	}
 }
