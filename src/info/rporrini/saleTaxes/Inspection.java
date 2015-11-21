@@ -2,5 +2,7 @@ package info.rporrini.saleTaxes;
 
 public interface Inspection {
 
-	public void track(Item item);
+	public Inspection inspect(Item item);
+
+	void finishInspection();
 }

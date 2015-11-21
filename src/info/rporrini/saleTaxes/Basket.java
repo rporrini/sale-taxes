@@ -20,7 +20,7 @@ public class Basket {
 	
 	public void scan(Inspection visitor){
 		for(Item item : this.items){
-			visitor.track(item);
+			visitor.inspect(item);
 		}
 	}
 }

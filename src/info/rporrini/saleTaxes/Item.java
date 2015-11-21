@@ -60,6 +60,6 @@ public class Item{
 	}
 	
 	private double rounded(double totalPrice) {
-		return Math.round(totalPrice * 100d) / 100d;
+		return Math.round(totalPrice * 100.0) / 100.0;
 	}
 }

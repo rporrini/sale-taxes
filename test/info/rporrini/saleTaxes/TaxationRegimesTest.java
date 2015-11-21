@@ -12,7 +12,7 @@ public class TaxationRegimesTest {
 		
 		Item item = new Item().withPrice(1.0);
 		
-		new TaxationRegimes().track(item);
+		new TaxationRegimes().inspect(item);
 		
 		assertThat(item.priceAfterTaxes(), equalTo(1.1));
 	}
@@ -22,7 +22,7 @@ public class TaxationRegimesTest {
 		
 		Item item = new Item().withPrice(1.0).withCategory("special items");
 		
-		new TaxationRegimes("special items").track(item);
+		new TaxationRegimes("special items").inspect(item);
 		
 		assertThat(item.priceAfterTaxes(), equalTo(1.0));
 	}

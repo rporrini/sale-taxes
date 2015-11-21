@@ -2,7 +2,7 @@ package info.rporrini.saleTaxes;
 
 import java.io.OutputStream;
 
-public class TotalTaxes {
+public class TotalTaxes implements Inspection{
 
 	private Screen out;
 	private double taxes = 0.0;
