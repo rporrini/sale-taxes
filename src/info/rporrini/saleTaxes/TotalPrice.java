@@ -1,24 +1,14 @@
 package info.rporrini.saleTaxes;
 
-import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
-import java.text.DecimalFormat;
 
 public class TotalPrice {
 	
-	private OutputStream out;
+	private Screen out;
 	private double totalPrice = 0.0;
 
-	public TotalPrice(ByteArrayOutputStream out) {
-		this.out = out;
-	}
-
-	public void finishInspection() {
-		PrintStream stream = new PrintStream(this.out);
-		stream.println("Total: " + formattedPrice(this.totalPrice));
-		stream.flush();
-		stream.close();		
+	public TotalPrice(OutputStream out) {
+		this.out = new Screen(out);
 	}
 
 	public TotalPrice inspect(Item item) {
@@ -26,7 +16,8 @@ public class TotalPrice {
 		return this;
 	}
 	
-	private String formattedPrice(double number) {
-		return new DecimalFormat("0.00").format(number);
+	public void finishInspection() {
+		out.send("Total: " + new PrintedNumber(this.totalPrice).asString());
+		out.flush();
 	}
 }
