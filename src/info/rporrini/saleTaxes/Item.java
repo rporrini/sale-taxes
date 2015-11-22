@@ -8,7 +8,7 @@ public class Item{
 	private int amount = 1;
 	
 	private String description = "";
-	private String category = "";
+	private String category;
 
 	public Item withPrice(double price) {
 		this.price = price;

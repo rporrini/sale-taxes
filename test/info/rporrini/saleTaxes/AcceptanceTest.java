@@ -19,7 +19,7 @@ public class AcceptanceTest {
 									"1 chocolate bar at 0.85"
 								};
 		
-		String receipt = printTheReceiptOf(testCategories(), basket);
+		String receipt = printTheReceiptOf(basket, testCategories());
 		
 		assertThat(receipt, 
 					allOf(containsString("1 book: 12.49"), 
@@ -36,7 +36,7 @@ public class AcceptanceTest {
 							"1 imported bottle of perfume at 47.50",
 						};
 		
-		String receipt = printTheReceiptOf(testCategories(), basket);
+		String receipt = printTheReceiptOf(basket, testCategories());
 		
 		assertThat(receipt, 
 					allOf(containsString("1 imported box of chocolates: 10.50"), 
@@ -54,7 +54,7 @@ public class AcceptanceTest {
 									"1 box of imported chocolates at 11.25",
 							};
 		
-		String receipt = printTheReceiptOf(testCategories(), basket);
+		String receipt = printTheReceiptOf(basket, testCategories());
 		
 		assertThat(receipt, 
 					allOf(containsString("1 imported bottle of perfume: 32.19"), 
@@ -65,7 +65,7 @@ public class AcceptanceTest {
 						  containsString("Total: 74.68")));
 	}
 	
-	private String printTheReceiptOf(String[][] categories, String[] basket) {
+	private String printTheReceiptOf(String[] basket, String[][] categories) {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		new ReceiptApplication(categories, basket, output).process();
 		return new String(output.toByteArray());

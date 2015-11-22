@@ -28,7 +28,6 @@ public class Basket {
 						.withAmount(Integer.parseInt(matcher.group("amount")))
 						.withDescription(matcher.group("description"))
 						.withPrice(Double.parseDouble(matcher.group("price"))));
-		
 		return this;
 	}
 }
