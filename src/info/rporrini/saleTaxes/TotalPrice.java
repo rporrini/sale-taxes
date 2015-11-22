@@ -18,6 +18,6 @@ public class TotalPrice implements BasketInspection{
 	
 	public void finish() {
 		out.send("Total: " + new PrintedNumber(this.totalPrice).asString());
-		out.flush();
+		out.printAll();
 	}
 }

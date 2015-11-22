@@ -14,7 +14,7 @@ public class TaxationRegimes implements BasketInspection{
 	@Override
 	public TaxationRegimes inspect(Item item) {
 		if(specialCategories.contains(item.category())) {
-			item.notTaxed();
+			item.exemptedFromTaxes();
 		}
 		return this;
 	}

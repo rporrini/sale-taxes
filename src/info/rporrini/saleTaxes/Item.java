@@ -3,8 +3,8 @@ package info.rporrini.saleTaxes;
 public class Item{
 	
 	private double price = 0.0;
-	private double taxRate = 10.0;
 	
+	private int taxRate = 10;
 	private int amount = 1;
 	
 	private String description = "";
@@ -47,16 +47,16 @@ public class Item{
 	}
 
 	public double totalTaxes() {
-		return this.amount * (Math.ceil(tax() * 20) / 20);
+		return this.amount * roundedUp(tax());
 	}
-	
-	public Item notTaxed() {
-		this.taxRate -= 10.0;
+
+	public Item exemptedFromTaxes() {
+		this.taxRate -= 10;
 		return this;
 	}
 	
 	public Item imported(){
-		this.taxRate += 5.0;
+		this.taxRate += 5;
 		return this;
 	}
 	
@@ -66,6 +66,10 @@ public class Item{
 	
 	private double tax() {
 		return this.price * this.taxRate / 100.0;
+	}
+	
+	private double roundedUp(double tax) {
+		return Math.ceil(tax * 20) / 20;
 	}
 	
 	private double rounded(double number) {

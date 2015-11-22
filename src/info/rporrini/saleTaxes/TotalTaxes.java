@@ -18,6 +18,6 @@ public class TotalTaxes implements BasketInspection{
 	
 	public void finish() {
 		out.send("Sales Taxes: " + new PrintedNumber(taxes).asString());
-		out.flush();
+		out.printAll();
 	}
 }

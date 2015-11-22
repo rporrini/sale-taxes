@@ -15,7 +15,7 @@ public class Screen{
 		this.out.println(content);
 	}
 	
-	public void flush(){
+	public void printAll(){
 		this.out.flush();
 		this.out.close();
 	}

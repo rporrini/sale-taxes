@@ -25,6 +25,6 @@ public class ItemDescriptions implements BasketInspection{
 		for(String line : lines){
 			this.out.send(line);
 		}
-		this.out.flush();
+		this.out.printAll();
 	}
 }

@@ -10,7 +10,7 @@ public class ImportedItemsTaxationTest {
 	@Test
 	public void notImportedItemsShouldHaveRegularTaxation() {
 		
-		Item item = new Item().withDescription("an item").notTaxed().withPrice(1.0);
+		Item item = new Item().withDescription("an item").exemptedFromTaxes().withPrice(1.0);
 		
 		new ImportedItemsTaxation().inspect(item);
 		
@@ -20,7 +20,7 @@ public class ImportedItemsTaxationTest {
 	@Test
 	public void importedItemsShouldHaveRegularTaxation() {
 		
-		Item item = new Item().withDescription("imported item").notTaxed().withPrice(1.0);
+		Item item = new Item().withDescription("imported item").exemptedFromTaxes().withPrice(1.0);
 		
 		new ImportedItemsTaxation().inspect(item);
 		

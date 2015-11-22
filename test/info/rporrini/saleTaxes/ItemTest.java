@@ -58,7 +58,7 @@ public class ItemTest {
 	@Test
 	public void specialTaxationRegimeShouldMeanNoTaxes() throws Exception {
 		
-		Item item = new Item().withPrice(1.0).notTaxed();
+		Item item = new Item().withPrice(1.0).exemptedFromTaxes();
 		
 		assertThat(item.priceAfterTaxes(), equalTo(1.0));
 	}
@@ -82,7 +82,7 @@ public class ItemTest {
 	@Test
 	public void taxesForImportedItemsShouldBeReisedBy5PercentAlsoWhenAreNotTaxed() throws Exception {
 		
-		Item item = new Item().withPrice(1.00).notTaxed().imported();
+		Item item = new Item().withPrice(1.00).exemptedFromTaxes().imported();
 		
 		assertThat(item.priceAfterTaxes(), equalTo(1.05));
 	}
