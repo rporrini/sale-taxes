@@ -1,8 +1,8 @@
 package info.rporrini.saleTaxes;
 
-public class ImportedItems implements BasketInspection {
+public class ImportedItemsTaxation implements BasketInspection {
 
-	public ImportedItems inspect(Item item) {
+	public ImportedItemsTaxation inspect(Item item) {
 		if(item.description().startsWith("imported")){
 			item.imported();
 		}

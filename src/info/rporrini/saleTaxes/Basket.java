@@ -19,10 +19,10 @@ public class Basket {
 		return this;
 	}
 	
-	public void scan(BasketInspection inspector){
+	public void inspectWith(BasketInspection inspection){
 		for(Item item : this.items){
-			inspector.inspect(item);
+			inspection.inspect(item);
 		}
-		inspector.finish();
+		inspection.finish();
 	}
 }

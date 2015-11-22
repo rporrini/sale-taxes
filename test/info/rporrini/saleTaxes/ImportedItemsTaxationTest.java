@@ -5,14 +5,14 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class ImportedItemsTest {
+public class ImportedItemsTaxationTest {
 
 	@Test
 	public void notImportedItemsShouldHaveRegularTaxation() {
 		
 		Item item = new Item().withDescription("an item").notTaxed().withPrice(1.0);
 		
-		new ImportedItems().inspect(item);
+		new ImportedItemsTaxation().inspect(item);
 		
 		assertThat(item.totalTaxes(), equalTo(0.0));
 	}
@@ -22,7 +22,7 @@ public class ImportedItemsTest {
 		
 		Item item = new Item().withDescription("imported item").notTaxed().withPrice(1.0);
 		
-		new ImportedItems().inspect(item);
+		new ImportedItemsTaxation().inspect(item);
 		
 		assertThat(item.totalTaxes(), equalTo(0.05));
 	}

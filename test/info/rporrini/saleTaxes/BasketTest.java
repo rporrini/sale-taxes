@@ -14,7 +14,7 @@ public class BasketTest {
 		
 		InspectionTestDouble inspector = new InspectionTestDouble();
 		
-		new Basket().scan(inspector);
+		new Basket().inspectWith(inspector);
 		
 		assertThat(inspector.items, empty());
 	}
@@ -24,7 +24,7 @@ public class BasketTest {
 		
 		InspectionTestDouble inspector = new InspectionTestDouble();
 		
-		new Basket().add(new String[]{"1", "the item", "2.0", "the item category"}).scan(inspector);
+		new Basket().add(new String[]{"1", "the item", "2.0", "the item category"}).inspectWith(inspector);
 		
 		assertThat(inspector.items, not(empty()));
 	}
@@ -34,7 +34,7 @@ public class BasketTest {
 		
 		InspectionTestDouble inspector = new InspectionTestDouble();
 		
-		new Basket().add(new String[]{"1", "the item", "2.0", "the item category"}).scan(inspector);
+		new Basket().add(new String[]{"1", "the item", "2.0", "the item category"}).inspectWith(inspector);
 		
 		assertThat(inspector.last().description(), equalTo("the item"));
 		assertThat(inspector.last().category(), equalTo("the item category"));
