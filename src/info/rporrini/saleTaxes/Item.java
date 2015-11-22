@@ -43,11 +43,11 @@ public class Item{
 	}
 
 	public double priceAfterTaxes() {
-		return rounded(this.amount * (this.price + tax()));
+		return rounded(priceBeforeTaxes() + totalTaxes());
 	}
-	
+
 	public double totalTaxes() {
-		return rounded(this.amount * tax());
+		return this.amount * (Math.ceil(tax() * 20) / 20);
 	}
 	
 	public Item notTaxed() {
@@ -58,6 +58,10 @@ public class Item{
 	public Item imported(){
 		this.taxRate += 5.0;
 		return this;
+	}
+	
+	private double priceBeforeTaxes() {
+		return this.amount * this.price;
 	}
 	
 	private double tax() {

@@ -1,7 +1,7 @@
 package info.rporrini.saleTaxes;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -85,5 +85,13 @@ public class ItemTest {
 		Item item = new Item().withPrice(1.00).notTaxed().imported();
 		
 		assertThat(item.priceAfterTaxes(), equalTo(1.05));
+	}
+	
+	@Test
+	public void theTotalTaxesShouldBeRoundedUpToTheNearestMultipleOf5() throws Exception {
+		
+		Item item = new Item().withPrice(1.01);
+		
+		assertThat(item.totalTaxes(), equalTo(0.15));
 	}
 }
