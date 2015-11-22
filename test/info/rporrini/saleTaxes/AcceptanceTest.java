@@ -50,7 +50,7 @@ public class AcceptanceTest {
 									{"1", "imported bottle of perfume", "27.99", "perfumes"},
 									{"1", "bottle of perfume", "18.99", "perfumes"},
 									{"1", "packet of headache pills", "9.75", "medicals"},
-									{"1", "imported box of chocolates", "11.25", "food"},
+									{"1", "box of imported chocolates", "11.25", "food"},
 							};
 		
 		String receipt = printTheReceiptOf(basket);
@@ -59,7 +59,7 @@ public class AcceptanceTest {
 					allOf(containsString("1 imported bottle of perfume: 32.19"), 
 						  containsString("1 bottle of perfume: 20.89"),
 						  containsString("1 packet of headache pills: 9.75"),
-						  containsString("1 imported box of chocolates: 11.85"),
+						  containsString("1 box of imported chocolates: 11.85"),
 						  containsString("Sales Taxes: 6.70"),
 						  containsString("Total: 74.68")));
 	}
