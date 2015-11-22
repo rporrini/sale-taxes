@@ -14,8 +14,7 @@ public class Basket {
 		items.add(new Item()
 						.withAmount(Integer.parseInt(rawItem[0]))
 						.withDescription(rawItem[1])
-						.withPrice(Double.parseDouble(rawItem[2]))
-						.withCategory(rawItem[3]));
+						.withPrice(Double.parseDouble(rawItem[2])));
 		return this;
 	}
 	

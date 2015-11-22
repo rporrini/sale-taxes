@@ -6,10 +6,12 @@ public class ReceiptApplication {
 
 	private OutputStream out;
 	private String[][] rawBasket;
+	private ItemsCategory category;
 
-	public ReceiptApplication(String[][] rawBasket, OutputStream out) {
+	public ReceiptApplication(String[][] categories, String[][] rawBasket, OutputStream out) {
 		this.out = out;
 		this.rawBasket = rawBasket;
+		this.category = new ItemsCategory(categories);
 	}
 
 	public void process() {
@@ -22,6 +24,7 @@ public class ReceiptApplication {
 
 	private BasketInspection[] taxations() {
 		return new BasketInspection[]{
+				new CategorizeItems(category),
 				new ImportedItemsTaxation(),
 				new SpecialTaxationRegimes("books", "food", "medicals"),	
 		};

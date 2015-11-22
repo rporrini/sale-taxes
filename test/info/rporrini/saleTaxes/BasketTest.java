@@ -37,7 +37,6 @@ public class BasketTest {
 		new Basket().add(new String[]{"1", "the item", "2.0", "the item category"}).inspectWith(inspector);
 		
 		assertThat(inspector.last().description(), equalTo("the item"));
-		assertThat(inspector.last().category(), equalTo("the item category"));
 		assertThat(inspector.last().priceAfterTaxes(), equalTo(2.2));
 	}
 }
