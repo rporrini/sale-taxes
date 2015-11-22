@@ -11,13 +11,13 @@ public class TotalTaxes implements BasketInspection{
 		this.out = new Screen(out);
 	}
 
-	public void finish() {
-		out.send("Sales Taxes: " + new PrintedNumber(taxes).asString());
-		out.flush();
-	}
-
 	public TotalTaxes inspect(Item item) {
 		taxes += item.totalTaxes();
 		return this;
+	}
+	
+	public void finish() {
+		out.send("Sales Taxes: " + new PrintedNumber(taxes).asString());
+		out.flush();
 	}
 }

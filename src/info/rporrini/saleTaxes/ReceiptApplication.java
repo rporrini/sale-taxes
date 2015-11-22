@@ -5,12 +5,14 @@ import java.io.OutputStream;
 public class ReceiptApplication {
 
 	private OutputStream out;
+	private String[][] rawBasket;
 
-	public ReceiptApplication(OutputStream out) {
+	public ReceiptApplication(String[][] rawBasket, OutputStream out) {
 		this.out = out;
+		this.rawBasket = rawBasket;
 	}
 
-	public void process(String[][] rawBasket) {
+	public void process() {
 		
 		Basket basket = basketFrom(rawBasket);
 		for(BasketInspection inspector : basketInspections()){
