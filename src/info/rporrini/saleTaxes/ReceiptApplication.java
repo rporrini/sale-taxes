@@ -5,10 +5,10 @@ import java.io.OutputStream;
 public class ReceiptApplication {
 
 	private OutputStream out;
-	private String[][] rawBasket;
+	private String[] rawBasket;
 	private ItemsCategory category;
 
-	public ReceiptApplication(String[][] categories, String[][] rawBasket, OutputStream out) {
+	public ReceiptApplication(String[][] categories, String[] rawBasket, OutputStream out) {
 		this.out = out;
 		this.rawBasket = rawBasket;
 		this.category = new ItemsCategory(categories);
@@ -45,9 +45,9 @@ public class ReceiptApplication {
 		}
 	}
 
-	private Basket basketFrom(String[][] rawBasket) {
+	private Basket basketFrom(String[] rawBasket) {
 		Basket basket = new Basket();
-		for(String[] rawItem : rawBasket){
+		for(String rawItem : rawBasket){
 			basket.add(rawItem);
 		}
 		return basket;

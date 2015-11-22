@@ -2,7 +2,6 @@ package info.rporrini.saleTaxes;
 
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
@@ -20,23 +19,14 @@ public class BasketTest {
 	}
 	
 	@Test
-	public void shouldAcceptNewItems() throws Exception {
+	public void shouldBuildItemsWithTheRightRepresentationFromARawItem() throws Exception {
 		
 		InspectionTestDouble inspector = new InspectionTestDouble();
 		
-		new Basket().add(new String[]{"1", "the item", "2.0", "the item category"}).inspectWith(inspector);
+		new Basket().add("1 the item description at 2.0").inspectWith(inspector);
 		
-		assertThat(inspector.items, not(empty()));
-	}
-	
-	@Test
-	public void shouldBuildItemsWithTheRightRepresentation() throws Exception {
-		
-		InspectionTestDouble inspector = new InspectionTestDouble();
-		
-		new Basket().add(new String[]{"1", "the item", "2.0", "the item category"}).inspectWith(inspector);
-		
-		assertThat(inspector.last().description(), equalTo("the item"));
+		assertThat(inspector.last().amount(), equalTo(1));
+		assertThat(inspector.last().description(), equalTo("the item description"));
 		assertThat(inspector.last().priceAfterTaxes(), equalTo(2.2));
 	}
 }
