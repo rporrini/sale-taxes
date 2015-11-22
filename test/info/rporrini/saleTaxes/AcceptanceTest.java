@@ -8,7 +8,7 @@ import java.io.ByteArrayOutputStream;
 
 import org.junit.Test;
 
-public class ReceiptApplicationAcceptanceTest {
+public class AcceptanceTest {
 
 	@Test
 	public void shouldPrintTheDetailsForNotImportedItems() {

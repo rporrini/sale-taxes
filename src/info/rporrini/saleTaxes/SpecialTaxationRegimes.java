@@ -3,16 +3,16 @@ package info.rporrini.saleTaxes;
 import java.util.Arrays;
 import java.util.List;
 
-public class TaxationRegimes implements BasketInspection{
+public class SpecialTaxationRegimes implements BasketInspection{
 
 	private List<String> specialCategories;
 
-	public TaxationRegimes(String... specialCategories) {
+	public SpecialTaxationRegimes(String... specialCategories) {
 		this.specialCategories = Arrays.asList(specialCategories);
 	}
 
 	@Override
-	public TaxationRegimes inspect(Item item) {
+	public SpecialTaxationRegimes inspect(Item item) {
 		if(specialCategories.contains(item.category())) {
 			item.exemptedFromTaxes();
 		}

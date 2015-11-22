@@ -23,7 +23,7 @@ public class ReceiptApplication {
 	private BasketInspection[] taxations() {
 		return new BasketInspection[]{
 				new ImportedItemsTaxation(),
-				new TaxationRegimes("books", "food", "medicals"),	
+				new SpecialTaxationRegimes("books", "food", "medicals"),	
 		};
 	}
 

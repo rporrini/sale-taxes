@@ -5,14 +5,14 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class TaxationRegimesTest {
+public class SpecialTaxationRegimesTest {
 
 	@Test
 	public void shouldLeaveTheStandardTaxationRegimeByDefault() throws Exception {
 		
 		Item item = new Item().withPrice(1.0);
 		
-		new TaxationRegimes().inspect(item);
+		new SpecialTaxationRegimes().inspect(item);
 		
 		assertThat(item.priceAfterTaxes(), equalTo(1.1));
 	}
@@ -22,7 +22,7 @@ public class TaxationRegimesTest {
 		
 		Item item = new Item().withPrice(1.0).withCategory("special items");
 		
-		new TaxationRegimes("special items").inspect(item);
+		new SpecialTaxationRegimes("special items").inspect(item);
 		
 		assertThat(item.priceAfterTaxes(), equalTo(1.0));
 	}

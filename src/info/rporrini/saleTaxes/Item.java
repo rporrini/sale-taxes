@@ -10,8 +10,8 @@ public class Item{
 	private String description = "";
 	private String category = "";
 
-	public Item withPrice(double shelfPrice) {
-		this.price = shelfPrice;
+	public Item withPrice(double price) {
+		this.price = price;
 		return this;
 	}
 	
