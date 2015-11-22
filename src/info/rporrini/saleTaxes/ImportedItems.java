@@ -1,6 +1,6 @@
 package info.rporrini.saleTaxes;
 
-public class ImportedItems {
+public class ImportedItems implements BasketInspection {
 
 	public ImportedItems inspect(Item item) {
 		if(item.description().startsWith("imported")){
@@ -9,4 +9,6 @@ public class ImportedItems {
 		return this;
 	}
 
+	@Override
+	public void finish() {}
 }

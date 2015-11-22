@@ -6,7 +6,6 @@ import static org.junit.Assert.assertThat;
 
 import java.io.ByteArrayOutputStream;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class ReceiptApplicationAcceptanceTest {
@@ -30,7 +29,6 @@ public class ReceiptApplicationAcceptanceTest {
 	}
 	
 	@Test
-	@Ignore
 	public void shouldPrintTheDetailsForImportedItems() {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		
@@ -47,7 +45,6 @@ public class ReceiptApplicationAcceptanceTest {
 	}
 	
 	@Test
-	@Ignore
 	public void shouldPrintTheDetailsForMixedItems() {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		
