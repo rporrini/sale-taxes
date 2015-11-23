@@ -1,30 +1,23 @@
 package info.rporrini.saleTaxes;
 
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ItemDescriptions implements BasketInspection{
 
-	private Screen out;
-	private List<String> lines;
+	private Screen screen;
 
 	public ItemDescriptions(OutputStream out) {
-		this.out = new Screen(out);
-		this.lines = new ArrayList<String>();
+		this.screen = new Screen(out);
 	}
 
 	@Override
 	public ItemDescriptions inspect(Item item) {
-		lines.add(item.amount() + " " + item.description() + ": " + new PrintedNumber(item.priceAfterTaxes()).asString());
+		screen.send(item.amount() + " " + item.description() + ": " + new PrintedNumber(item.priceAfterTaxes()).asString());
 		return this;
 	}
 	
 	@Override
 	public void finish(){
-		for(String line : lines){
-			this.out.send(line);
-		}
-		this.out.printAll();
+		this.screen.printAll();
 	}
 }
