@@ -23,7 +23,7 @@ public class BasketTest {
 		
 		InspectionTestDouble inspector = new InspectionTestDouble();
 		
-		new Basket().add("1 the item description at 2.0").inspectWith(inspector);
+		new Basket().from("1 the item description at 2.0").inspectWith(inspector);
 		
 		assertThat(inspector.last().amount(), equalTo(1));
 		assertThat(inspector.last().description(), equalTo("the item description"));

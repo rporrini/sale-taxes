@@ -12,22 +12,26 @@ public class Basket {
 		items = new ArrayList<Item>();
 	}
 
-	public void inspectWith(BasketInspection inspection){
-		for(Item item : this.items){
-			inspection.inspect(item);
+	public void inspectWith(BasketInspection... inspections) {
+		for(BasketInspection inspection : inspections){
+			for(Item item : this.items){
+				inspection.inspect(item);
+			}
+			inspection.finish();
 		}
-		inspection.finish();
 	}
 
-	public Basket add(String rawItem) {
-		
-		Matcher matcher = Pattern.compile("^(?<amount>\\d+) (?<description>.+) at (?<price>\\d+\\.\\d+)").matcher(rawItem);
-		matcher.matches();
-		
-		items.add(new Item()
-						.withAmount(Integer.parseInt(matcher.group("amount")))
-						.withDescription(matcher.group("description"))
-						.withPrice(Double.parseDouble(matcher.group("price"))));
+	public Basket from(String... rawBasket) {
+		Pattern pattern = Pattern.compile("^(?<amount>\\d+) (?<description>.+) at (?<price>\\d+\\.\\d+)");
+		for(String rawItem : rawBasket){
+			Matcher matcher = pattern.matcher(rawItem);
+			matcher.matches();
+			
+			items.add(new Item()
+							.withAmount(Integer.parseInt(matcher.group("amount")))
+							.withDescription(matcher.group("description"))
+							.withPrice(Double.parseDouble(matcher.group("price"))));
+		}
 		return this;
 	}
 }

@@ -16,9 +16,9 @@ public class ReceiptApplication {
 
 	public void process() {
 		
-		Basket basket = basketFrom(rawBasket);
-		process(basket, taxations());
-		process(basket, receiptPrint());
+		Basket basket = new Basket().from(rawBasket);
+		basket.inspectWith(taxations());
+		basket.inspectWith(receiptPrint());
 		
 	}
 
@@ -36,20 +36,5 @@ public class ReceiptApplication {
 					new TotalTaxes(out),
 					new TotalPrice(out)
 		};
-	}
-	
-	private void process(Basket basket, BasketInspection[] inspections) {
-		
-		for(BasketInspection inspection : inspections){
-			basket.inspectWith(inspection);
-		}
-	}
-
-	private Basket basketFrom(String[] rawBasket) {
-		Basket basket = new Basket();
-		for(String rawItem : rawBasket){
-			basket.add(rawItem);
-		}
-		return basket;
 	}
 }
